@@ -12,9 +12,6 @@
   },
   "require": {
     "drupal/jsonapi": "^2.0",
-    "swagger-api/swagger-ui": "^3.0",
-    "drupal/schemata": "^1.0",
-    "drupal/simple_oauth": "^3.0",
-    "drupal/docson": "^1.0"
+    "drupal/simple_oauth": "^3.0"
   }
 }
