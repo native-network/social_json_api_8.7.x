@@ -1,0 +1,12 @@
+name: Social JSON API
+type: module
+description: This module enables a JSON API for your Open Social site.
+core: 8.x
+package: Social
+dependencies:
+#  - docson
+  - jsonapi
+#  - schemata
+  - serialization
+  - simple_oauth
+  - simple_oauth_extras

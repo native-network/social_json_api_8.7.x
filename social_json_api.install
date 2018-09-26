@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Contains social_json_api.install.
+ */
+
+use Drupal\Core\StreamWrapper\PrivateStream;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function social_json_api_install() {
+
+  $file_private_path_base_path = PrivateStream::basePath();
+  $simple_oauth_settings = \Drupal::configFactory()->getEditable('simple_oauth.settings');
+
+  if ($file_private_path_base_path !== NULL && ($simple_oauth_settings->get('public_key') === NULL) && ($simple_oauth_settings->get('private_key') === NULL)) {
+    $path = $file_private_path_base_path . '/oauth_api_keys/';
+    if (!is_dir($path)) {
+      \Drupal::service('file_system')->mkdir($path, 0777, TRUE);
+      touch($path . 'private.key');
+      touch($path . 'public.key');
+    }
+    try {
+      $simple_oauth_key_generator = \Drupal::service('simple_oauth.key.generator');
+      $simple_oauth_key_generator->generateKeys($path);
+
+      $simple_oauth_settings->set('public_key', $path . 'public.key');
+      $simple_oauth_settings->set('private_key', $path . 'private.key');
+      $simple_oauth_settings->save();
+    } catch (Exception $e) {
+      $oauth_key_generator_message = t('Could not generate the Simple OAuth keys needed for the JSON API. You will need to create those by hand.');
+    }
+  }
+  else {
+    $oauth_key_generator_message = t('Could not generate the Simple OAuth keys needed for the JSON API. These were either created already or you will need to create those by hand.');
+  }
+
+  if (isset($oauth_key_generator_message)) {
+    $messenger = \Drupal::messenger();
+    $messenger->addMessage($oauth_key_generator_message, 'warning');
+  }
+
+  $data = ['id' => 'social_api', 'label' => 'Social API'];
+  /** @var \Drupal\user\Entity\Role $role */
+  $role = Role::create($data);
+  try {
+    $role->save();
+  }
+  catch (Exception $e) {
+    $messenger = \Drupal::messenger();
+    $messenger->addMessage(t('Could not save the role @role', ['@role' => $role->id()]), 'warning');
+  }
+
+  $roles = Role::loadMultiple();
+
+  foreach ($roles as $role) {
+    if ($role->id() === 'administrator') {
+      continue;
+    }
+
+    $permissions = _social_json_api_get_permissions($role->id());
+    user_role_grant_permissions($role->id(), $permissions);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function social_json_api_uninstall() {
+  // Remove the private files directory with the oauth_api_keys.
+  file_unmanaged_delete_recursive('private://oauth_api_keys/');
+
+  // TODO:
+  // - Delete the role
+  // - Uninstall the other JSON / API modules.
+}
+
+/**
+ * Return the permissions per role.
+ *
+ * @param string $role
+ *   The role to get the permissions for.
+ *
+ * @return array
+ *   A list of permissions.
+ */
+function _social_json_api_get_permissions($role) {
+  $permissions['sitemanager'] = [
+    'grant simple_oauth codes',
+    'add simple_oauth entities',
+    'administer simple_oauth entities',
+    'delete own simple_oauth entities',
+    'update own simple_oauth entities',
+    'view own simple_oauth entities',
+    'add consumer entities',
+    'administer consumer entities',
+    'delete own consumer entities',
+    'update own consumer entities',
+    'view own consumer entities',
+  ];
+
+  // API Role.
+  $permissions['social_api'] = [
+    '',
+  ];
+
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+  return [];
+}

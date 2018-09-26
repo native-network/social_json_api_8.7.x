@@ -1,0 +1,20 @@
+{
+  "name": "drupal/social_json_api",
+  "type": "drupal-module",
+  "description": "This module enables a JSON API for your Open Social site.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/social_json_api",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/social_json_api",
+    "source": "http://cgit.drupalcode.org/social_json_api"
+  },
+  "require": {
+    "drupal/jsonapi": "^2.0",
+    "swagger-api/swagger-ui": "^3.0",
+    "drupal/schemata": "^1.0",
+    "drupal/simple_oauth": "^3.0",
+    "drupal/docson": "^1.0"
+  }
+}
