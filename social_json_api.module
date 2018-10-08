@@ -4,3 +4,28 @@
  * @file
  * Contains social_json_api.module.
  */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function social_json_api_entity_type_alter(array &$entity_types) {
+  $allow = [
+    'comment',
+    'user_consent',
+    'data_policy',
+    'file',
+    'group',
+    'group_content',
+    'image_style',
+    'node',
+    'profile',
+    'post',
+    'taxonomy_term',
+    'user',
+    'vote',
+    'vote_result',
+  ];
+
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['crop']->set('internal', TRUE);
+}
