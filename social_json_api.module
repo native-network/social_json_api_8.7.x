@@ -11,21 +11,22 @@
 function social_json_api_entity_type_alter(array &$entity_types) {
   $allow = [
     'comment',
-    'user_consent',
-    'data_policy',
+    'event_enrollment',
     'file',
     'group',
     'group_content',
-    'image_style',
     'node',
-    'profile',
     'post',
+    'profile',
     'taxonomy_term',
     'user',
-    'vote',
-    'vote_result',
   ];
 
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
-  $entity_types['crop']->set('internal', TRUE);
+  foreach ($entity_types as $entity_name => $entity_type) {
+    /** @var $entity_type \Drupal\Core\Entity\EntityTypeInterface */
+    if (in_array($entity_name, $allow, TRUE) !== TRUE) {
+      $entity_type->set('internal', TRUE);
+    }
+  }
 }
