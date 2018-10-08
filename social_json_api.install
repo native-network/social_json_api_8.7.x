@@ -43,17 +43,6 @@ function social_json_api_install() {
     $messenger->addMessage($oauth_key_generator_message, 'warning');
   }
 
-  $data = ['id' => 'social_api', 'label' => 'Social API'];
-  /** @var \Drupal\user\Entity\Role $role */
-  $role = Role::create($data);
-  try {
-    $role->save();
-  }
-  catch (Exception $e) {
-    $messenger = \Drupal::messenger();
-    $messenger->addMessage(t('Could not save the role @role', ['@role' => $role->id()]), 'warning');
-  }
-
   $roles = Role::loadMultiple();
 
   foreach ($roles as $role) {
@@ -72,10 +61,6 @@ function social_json_api_install() {
 function social_json_api_uninstall() {
   // Remove the private files directory with the oauth_api_keys.
   file_unmanaged_delete_recursive('private://oauth_api_keys/');
-
-  // TODO:
-  // - Delete the role
-  // - Uninstall the other JSON / API modules.
 }
 
 /**
@@ -100,11 +85,7 @@ function _social_json_api_get_permissions($role) {
     'delete own consumer entities',
     'update own consumer entities',
     'view own consumer entities',
-  ];
-
-  // API Role.
-  $permissions['social_api'] = [
-    '',
+    'view published event enrollment entities',
   ];
 
   if (isset($permissions[$role])) {
