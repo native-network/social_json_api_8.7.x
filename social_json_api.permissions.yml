@@ -1,0 +1,4 @@
+'configure social json api':
+  title: 'Configure Social JSON Api'
+  description: 'Allow to configure the JSON API in Open Social.'
+  restrict access: false

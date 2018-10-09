@@ -1,0 +1,6 @@
+social_json_api.settings:
+  title: 'JSON API settings'
+  description: 'Settings for Social JSON API.'
+  route_name: social_json_api.settings
+  parent: social_core.admin.config.social
+  weight: 51

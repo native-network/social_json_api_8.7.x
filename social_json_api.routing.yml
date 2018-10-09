@@ -1,0 +1,7 @@
+social_json_api.settings:
+  path: '/admin/config/opensocial/social-json-api'
+  defaults:
+    _form: 'Drupal\social_json_api\Form\SocialJsonApiSettings'
+    _title: 'JSON API settings'
+  requirements:
+    _permission: 'set social group settings'
