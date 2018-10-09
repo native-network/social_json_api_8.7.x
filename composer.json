@@ -8,6 +8,18 @@
   "minimum-stability": "dev",
   "require": {
     "drupal/jsonapi": "^2.0",
-    "drupal/simple_oauth": "^3.0"
+    "drupal/simple_oauth": "^3.0",
+    "drupal/schemata": "^1.0",
+    "drupal/openapi_ui_redoc": "^1.0",
+    "drupal/openapi_ui": "^1.0",
+    "drupal/openapi": "^1.0"
+  },
+  "extra": {
+    "enable-patching": true,
+    "patches": {
+      "drupal/openapi": {
+        "Exclude disabled resources": "https://www.drupal.org/files/issues/2018-09-18/3000458--exclude-disabled-resource-types--2.patch"
+      }
+    }
   }
 }
