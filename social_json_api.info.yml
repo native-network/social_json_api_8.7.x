@@ -11,3 +11,6 @@ dependencies:
   - openapi_ui_redoc
   - openapi
   - schemata_json_schema
+
+version: '8.x-1.0-alpha1'
+project: 'social_json_api'
