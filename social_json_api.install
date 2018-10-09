@@ -86,6 +86,7 @@ function _social_json_api_get_permissions($role) {
     'update own consumer entities',
     'view own consumer entities',
     'view published event enrollment entities',
+    'access openapi api docs',
   ];
 
   if (isset($permissions[$role])) {

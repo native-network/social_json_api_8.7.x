@@ -9,6 +9,7 @@
  * Implements hook_entity_type_alter().
  */
 function social_json_api_entity_type_alter(array &$entity_types) {
+  // TODO Make this configurable.
   $allow = [
     'comment',
     'event_enrollment',
