@@ -14,6 +14,34 @@ msgstr ""
 msgid "Could not generate the Simple OAuth keys needed for the JSON API. These were either created already or you will need to create those by hand."
 msgstr ""
 
+#: social_json_api.info.yml:0
+msgid "Social JSON API"
+msgstr ""
+
+#: social_json_api.info.yml:0
+msgid "This module enables a JSON API for your Open Social site."
+msgstr ""
+
+#: social_json_api.info.yml:0
+msgid "Social"
+msgstr "Sociaal"
+
+#: social_json_api.links.menu.yml:0 social_json_api.routing.yml:0
+msgid "JSON API settings"
+msgstr ""
+
+#: social_json_api.links.menu.yml:0
+msgid "Settings for Social JSON API."
+msgstr ""
+
+#: social_json_api.permissions.yml:0
+msgid "Configure Social JSON Api"
+msgstr ""
+
+#: social_json_api.permissions.yml:0
+msgid "Allow to configure the JSON API in Open Social."
+msgstr ""
+
 #: src/Form/SocialJsonApiSettings.php:39
 msgid "Consumers"
 msgstr ""
