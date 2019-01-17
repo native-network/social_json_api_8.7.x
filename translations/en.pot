@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: social_json_api\n"
-"POT-Creation-Date: 2018-12-04 11:18+0000\n"
+"POT-Creation-Date: 2019-01-17 11:45+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -24,11 +24,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: social_json_api.install:34
-msgid "Could not generate the Simple OAuth keys needed for the JSON API. You will need to create those by hand."
+msgid ""
+"Could not generate the Simple OAuth keys needed for the JSON API. You will "
+"need to create those by hand."
 msgstr ""
 
 #: social_json_api.install:38
-msgid "Could not generate the Simple OAuth keys needed for the JSON API. These were either created already or you will need to create those by hand."
+msgid ""
+"Could not generate the Simple OAuth keys needed for the JSON API. These were "
+"either created already or you will need to create those by hand."
 msgstr ""
 
 #: social_json_api.info.yml:0
@@ -64,7 +68,10 @@ msgid "Consumers"
 msgstr ""
 
 #: src/Form/SocialJsonApiSettings.php:40
-msgid "Consumers can access the API. The main goal is that the developer of a consumer application will create the consumer. That consumer will provide the configuration necessary for that particular application."
+msgid ""
+"Consumers can access the API. The main goal is that the developer of a "
+"consumer application will create the consumer. That consumer will provide "
+"the configuration necessary for that particular application."
 msgstr ""
 
 #: src/Form/SocialJsonApiSettings.php:49
@@ -86,4 +93,3 @@ msgstr ""
 #: src/Form/SocialJsonApiSettings.php:70
 msgid "OAuth 2.0 Grants"
 msgstr ""
-
