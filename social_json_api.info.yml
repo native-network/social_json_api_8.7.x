@@ -6,8 +6,6 @@ package: Social
 dependencies:
   - jsonapi
   - serialization
-  - simple_oauth
-  - simple_oauth_extras
   - openapi_ui_redoc
   - openapi
   - schemata_json_schema
