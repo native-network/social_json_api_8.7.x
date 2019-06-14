@@ -1,5 +1,5 @@
 {
-  "name": "goalgorilla/social_json_api",
+  "name": "native-network/social_json_api",
   "type": "drupal-module",
   "description": "This module enables a JSON API for your Open Social site.",
   "keywords": ["Drupal", "JSON", "API"],
